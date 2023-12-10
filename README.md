@@ -1,8 +1,13 @@
-# React + Vite
+# React Project || UnityIPL Assignment Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live link : https://random-project-ass.web.app/
 
-Currently, two official plugins are available:
+### instruction:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- open cmd
+- execute :- git clone https://github.com/maruf02/UnityIPL-assignment-Frontend.git
+
+- execute npm i
+- execute npm run dev
+- in cmd press o and open it your browser
+- See the project view in your localhost
