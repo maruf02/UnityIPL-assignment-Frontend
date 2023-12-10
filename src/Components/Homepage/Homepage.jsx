@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import { Helmet } from "react-helmet";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Homepage = () => {
   const [story, setStory] = useState({ hits: [] });
@@ -14,6 +17,10 @@ const Homepage = () => {
     }
   });
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const handleSearch = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,7 +30,10 @@ const Homepage = () => {
   };
 
   return (
-    <div>
+    <div data-aos="fade-down" data-aos-duration="3000">
+      <Helmet>
+        <title>Home || UnityIPL </title>
+      </Helmet>
       {/* for search section */}
       <div>
         <form onSubmit={handleSearch} className="flex justify-center py-10">
