@@ -4,18 +4,22 @@ import { FaArrowRight } from "react-icons/fa";
 
 const Homepage = () => {
   const [story, setStory] = useState({ hits: [] });
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch("https://hn.algolia.com/api/v1/search?query=test")
-      .then((res) => res.json())
-      .then((data) => setStory(data));
+    if (searchText) {
+      fetch(`https://hn.algolia.com/api/v1/search?query=${searchText}`)
+        .then((res) => res.json())
+        .then((data) => setStory(data));
+    }
   });
 
   const handleSearch = (e) => {
     e.preventDefault();
     const form = e.target;
     const SearchText = form.searchText.value;
-    console.log(SearchText);
+    // console.log(SearchText);
+    setSearchText(SearchText);
   };
 
   return (
@@ -40,22 +44,33 @@ const Homepage = () => {
           Search Result:
         </h2>
         <section className="container mx-auto text-center  w-3/4  h-full mb-10 ">
-          {story.hits.map((post) => (
-            <div
-              key={post.objectID}
-              className="bg-emerald-600 rounded-xl px-5 mt-10  "
-            >
-              <p className="pt-5">
-                <span className="text-lg font-bold">Title: </span>
-                {post.title}
+          {searchText ? (
+            <>
+              {story.hits.map((post) => (
+                <div
+                  key={post.objectID}
+                  className="bg-emerald-600 rounded-xl px-5 mt-10  "
+                >
+                  <p className="pt-5">
+                    <span className="text-lg font-bold">Title: </span>
+                    {post.title}
+                  </p>
+                  <Link>
+                    <p className="flex flex-row text-lg justify-end pb-4 ">
+                      See details{" "}
+                      <FaArrowRight className="mt-2 text-base ml-1" />
+                    </p>
+                  </Link>
+                </div>
+              ))}
+            </>
+          ) : (
+            <>
+              <p className="text-red-800 text-2xl font-bold">
+                For See Result Please Search with your keyword
               </p>
-              <Link>
-                <p className="flex flex-row text-lg justify-end pb-4 ">
-                  See details <FaArrowRight className="mt-2 text-base ml-1" />
-                </p>
-              </Link>
-            </div>
-          ))}
+            </>
+          )}
 
           {/* <div className="bg-emerald-600 rounded-xl px-5 mt-10  ">
             <p className="pt-5">
