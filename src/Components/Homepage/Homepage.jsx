@@ -11,18 +11,28 @@ const Homepage = () => {
       .then((data) => setStory(data));
   });
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const SearchText = form.searchText.value;
+    console.log(SearchText);
+  };
+
   return (
     <div>
       {/* for search section */}
-      <div className="flex justify-center py-10">
-        <input
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered input-info w-full max-w-xs bg-transparent"
-        />
-        <button className="btn btn-primary text-black text-lg mx-2">
-          Search
-        </button>
+      <div>
+        <form onSubmit={handleSearch} className="flex justify-center py-10">
+          <input
+            type="text"
+            name="searchText"
+            placeholder="Type here"
+            className="input input-bordered input-info w-full max-w-xs bg-transparent"
+          />
+          <button className="btn btn-primary text-black text-lg mx-2">
+            Search
+          </button>
+        </form>
       </div>
       {/* for search result section */}
       <div>
