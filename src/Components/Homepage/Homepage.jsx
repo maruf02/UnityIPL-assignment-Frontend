@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
 
 const Homepage = () => {
   const [story, setStory] = useState({ hits: [] });
@@ -16,6 +17,15 @@ const Homepage = () => {
         .then((data) => setStory(data));
     }
   });
+
+  // useEffect(() => {
+  //   if (searchText) {
+  //     axios
+  //       .get(`https://hn.algolia.com/api/v1/search?query=${searchText}`)
+  //       .then((response) => setStory(response.data))
+  //       .catch((error) => console.error("Error fetching data:", error));
+  //   }
+  // }, [searchText]);
 
   useEffect(() => {
     AOS.init();
