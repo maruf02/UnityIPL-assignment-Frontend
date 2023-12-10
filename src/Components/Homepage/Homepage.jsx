@@ -55,7 +55,7 @@ const Homepage = () => {
                     <span className="text-lg font-bold">Title: </span>
                     {post.title}
                   </p>
-                  <Link>
+                  <Link to={`/storyDetails/${post.objectID}`}>
                     <p className="flex flex-row text-lg justify-end pb-4 ">
                       See details{" "}
                       <FaArrowRight className="mt-2 text-base ml-1" />

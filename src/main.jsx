@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./Components/Root/Root.jsx";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 import Homepage from "./Components/Homepage/Homepage.jsx";
+import StoryDetails from "./Components/StoryDetails/StoryDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage></Homepage>,
+      },
+      {
+        path: "/storyDetails/:id",
+        element: <StoryDetails></StoryDetails>,
+        loader: ({ params }) =>
+          fetch(`https://hn.algolia.com/api/v1/items/${params.id}`),
       },
     ],
   },
